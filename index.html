@@ -75,13 +75,7 @@
 <script>
     let tg = window.Telegram.WebApp
     let form = document.getElementById("form")
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        let firstName = document.getElementById("first-name").value
-        let lastName = document.getElementById("last-name").value
-        tg.sendData(JSON.stringify({firstName, lastName}))
-        tg.close()
-    })
+    
 
     function updateForm() {
         const role = document.getElementById('role').value;
@@ -113,6 +107,13 @@
                 `;
             document.getElementById("user-id").value = tg.initDataUnsafe.user.id
         }
+        form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let firstName = document.getElementById("first-name").value
+        let lastName = document.getElementById("last-name").value
+        tg.sendData(JSON.stringify({firstName, lastName}))
+        tg.close()
+    })
     }
 </script>
        function submitForm(event) {
