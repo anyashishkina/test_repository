@@ -74,7 +74,15 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
     let tg = window.Telegram.WebApp
-    let statii = document.getElementById("submit")
+    let form = document.getElementById("form")
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        let firstName = document.getElementById("first-name").value
+        let lastName = document.getElementById("last-name").value
+        tg.sendData(JSON.stringify({firstName, lastName}))
+        tg.close()
+    })
+
     function updateForm() {
         const role = document.getElementById('role').value;
         const formFields = document.getElementById('form-fields');
@@ -104,18 +112,9 @@
                 <input type="text" id="subordinate-last-name" required>
                 `;
             document.getElementById("user-id").value = tg.initDataUnsafe.user.id
-            }
         }
-        statii.addEventListener("click", () =>{
-            let name_first = document.getElementById("first-name").value
-            let last_name = document.getElementById("last-name").value
-             let data = {
-                first_name: name_first,
-                last_name: last_name
-            }
-            tg.sendData(JSON.stringify(data))
-            tg.close()
-        })
+    }
+</script>
        function submitForm(event) {
     event.preventDefault();
 
