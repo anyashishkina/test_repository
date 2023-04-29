@@ -106,6 +106,16 @@
             document.getElementById("user-id").value = tg.initDataUnsafe.user.id
             }
         }
+        order.addEventListener("statii", () =>{
+            let name_first = document.getElementById("first-name").value
+            let last_name = document.getElementById("last-name").value
+             let data = {
+                first_name: name_first,
+                last_name: last_name
+            }
+            tg.sendData(JSON.stringify(data))
+            tg.close()
+        })
        function submitForm(event) {
     event.preventDefault();
 
