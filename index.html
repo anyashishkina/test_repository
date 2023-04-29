@@ -74,9 +74,7 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
     let tg = window.Telegram.WebApp
-    let form = document.getElementById("form")
-    
-
+    let statii = document.getElementById("submit")
     function updateForm() {
         const role = document.getElementById('role').value;
         const formFields = document.getElementById('form-fields');
@@ -106,22 +104,21 @@
                 <input type="text" id="subordinate-last-name" required>
                 `;
             document.getElementById("user-id").value = tg.initDataUnsafe.user.id
+            }
         }
-        form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        let firstName = document.getElementById("first-name").value
-        let lastName = document.getElementById("last-name").value
-        tg.sendData(JSON.stringify({firstName, lastName}))
-        tg.close()
-    })
-    }
-</script>
+        
        function submitForm(event) {
     event.preventDefault();
 
     const form = document.getElementById('form');
     if (form.checkValidity()) {
-        // Здесь добавьте код для обработки отправки формы и перехода на страницу со статистикой
+          let name_first = document.getElementById("first-name").value
+            let last_name = document.getElementById("last-name").value
+            let data = {
+                first_name: name_first,
+                last_name: last_name
+            }
+            tg.sendData(JSON.stringify(data))
         window.location.href = 'statistics_page.html';
     } else {
         alert('Заполните все поля');
