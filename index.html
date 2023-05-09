@@ -94,7 +94,7 @@
             document.getElementById("first-name").value = tg.initDataUnsafe.user.first_name
             document.getElementById("last-name").value = tg.initDataUnsafe.user.last_name
         } else if (role === 'supervisor') {
-            roleComment.innerText = 'Если Вы ходите посмотреть статистику одного из своих молодцов, то введите следующие данные. Если Вы хотите просмотреть общую статистику всех своих молодцов, то в полях "Имя" и "Фамилия" введите "all"';
+            roleComment.innerText = 'Если Вы ходите посмотреть статистику одного из своих подчиненных, то введите следующие данные. Если Вы хотите просмотреть общую статистику всех своих подчиненных, то в полях "Имя" и "Фамилия" введите "all"';
             formFields.innerHTML = `
                 <label for="user-id">Ваш User ID:</label>
                 <input type="text" id="user-id" required>
