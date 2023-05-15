@@ -118,12 +118,10 @@
           let data = {
                 first_name: name_first,
                 last_name: last_name
-            }
-          if (role === 'boss') {  
-            tg.sendData(JSON.stringify(data))
-          } else if (role == 'manager') {
-          window.location.href = 'statistics_page.html';
           }
+          tg.sendData(JSON.stringify(data))
+          window.location.href = 'statistics_page.html';
+         
     } else {
         alert('Заполните все поля');
     }
