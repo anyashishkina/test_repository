@@ -56,7 +56,7 @@
 </style>
 </head>
 <body>
-    <h1>Статистика молодцов!</h1>
+   <h1>Статистика молодцов!</h1>
     <small>Здесь вы можете просмотреть свою статистику или статистику ваших подчиненных</small>
     <label for="role">Выберите роль:</label>
 <select id="role" onchange="updateForm()">
@@ -66,18 +66,19 @@
 
 <div id="role-comment"></div> <!-- Добавлен элемент для комментария -->
 
-<form id="form" onsubmit="submitForm(event)">
-    <div id="form-fields">
-        <!-- Fields will be populated based on the role -->
-    </div>
-    <button type="submit">Посмотреть статистику</button>
-</form>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
-<script>
-    let tg = window.Telegram.WebApp
-    let statii = document.getElementById("submit")
-    function updateForm() {
-        const role = document.getElementById('role').value;
+    <form id="form" onsubmit="event.preventDefault(); submitForm();">
+        <div id="form-fields">
+            <!-- Fields will be populated based on the role -->
+        </div>
+        <button type="submit">Посмотреть статистику</button>
+    </form>
+
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        let tg = window.Telegram.WebApp
+        let statii = document.getElementById("submit")
+        function updateForm() {
+            const role = document.getElementById('role').value;
         const formFields = document.getElementById('form-fields');
         const roleComment = document.getElementById('role-comment');
         formFields.innerHTML = '';
@@ -108,34 +109,29 @@
             }
         }
 
-       function submitForm(event) {
-    event.preventDefault();
+        function submitForm() {
+            const form = document.getElementById('form');
+            let role = document.getElementById('role').value;
 
-    const form = document.getElementById('form');
-    let role = document.getElementById('role').value;
-   
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        if (form.checkValidity()) {
-            let firstName = document.getElementById("first-name").value
-            let lastName = document.getElementById("last-name").value
-            let data = { firstName, lastName }
-    
-            if (role === 'boss') {
-                tg.sendData(JSON.stringify(data))
-                // Закрыть страницу, если вы находитесь в браузере
-                window.close();
-            } else if (role == 'manager') {
-                window.location.href = 'statistics_page.html';
+            if (form.checkValidity()) {
+                let firstName = document.getElementById("first-name")?.value
+                let lastName = document.getElementById("last-name")?.value
+                let data = { firstName, lastName }
+
+                if (role === 'boss') {
+                    tg.sendData(JSON.stringify(data))
+                    // Закрыть страницу, если вы находитесь в браузере
+                    window.close();
+                } else if (role == 'manager') {
+                    window.location.href = 'statistics_page.html';
+                }
+            } else {
+                alert('Заполните все поля');
             }
-        } else {
-            alert('Заполните все поля');
         }
-    });
 
-
-    // Инициализируем форму при загрузке страницы
-    updateForm();
-</script>
+        // Инициализируем форму при загрузке страницы
+        updateForm();
+    </script>
 </body>
 </html>
