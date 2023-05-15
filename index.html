@@ -106,20 +106,20 @@
             document.getElementById("user-id").value = tg.initDataUnsafe.user.id
             }
         }
-        
+
        function submitForm(event) {
     event.preventDefault();
 
     const form = document.getElementById('form');
     if (form.checkValidity()) {
           let name_first = document.getElementById("first-name").value
-            let last_name = document.getElementById("last-name").value
-            let data = {
+          let last_name = document.getElementById("last-name").value
+          let data = {
                 first_name: name_first,
                 last_name: last_name
             }
-//             tg.sendData(JSON.stringify(data))
-        window.location.href = 'statistics_page.html';
+<!--            tg.sendData(JSON.stringify(data))-->
+          window.location.href = 'statistics_page.html';
     } else {
         alert('Заполните все поля');
     }
