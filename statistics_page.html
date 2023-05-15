@@ -20,8 +20,8 @@
 
     <script>
         // Получение данных из Flask
-        var data = {{ matrix|tojson|safe }};
-
+<!--        var data = {{ matrix|tojson|safe }};-->
+        let data = window.Telegram.WebApp.initDataUnsafe;
         // Создание тепловой карты с использованием Plotly
         var layout = {
             title: 'Результаты тестов',
