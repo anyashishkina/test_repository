@@ -17,13 +17,20 @@
     <div class="center">
         <div id="heatmap"></div>
     </div>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <py-script>
+        results = {
+        "test1": 0, "test2": 1, "test3": 0,
+        "test4": 2, "test5": 3, "test6": 1,
+        "test7": 0, "test8": 3, "test9": 1,
+        "test10": 2, "test11": 3, "test12": 1,
+        }
+        matrix = [list(results.values())[i:i+4] for i in range(0, len(results), 4)]
+    </py-script>
     <script>
         // Получение данных из Flask
-<!--        var data = {{ matrix|tojson|safe }};-->
-        let data = window.Telegram.WebApp.initDataUnsafe;
+        var data = {{ matrix|tojson|safe }};
         // Создание тепловой карты с использованием Plotly
-        var layout = {
+        var layout =
             title: 'Результаты тестов',
             xaxis: {
                 title: 'Состояние клиента',
