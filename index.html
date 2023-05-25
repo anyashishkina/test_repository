@@ -21,7 +21,6 @@
     <script>
         // Получение данных из Flask
         var data = {{ matrix|tojson|safe }};
-        // Создание тепловой карты с использованием Plotly
         var layout = {
             title: 'Результаты тестов',
             xaxis: {
@@ -33,13 +32,13 @@
             yaxis: {
                 title: 'Способ общения',
                 tickmode: 'array',
-                tickangle: 45, // угол наклона подписей оси Y
+                tickangle: 45,ф
                 tickvals: [0, 1, 2],
                 ticktext: ['Телефон', 'Встреча', 'Переписка']
             },
-            autosize: false, // отключение автоматического масштабирования
-            width: 1000,      // ширина в пикселях
-            height: 500      // высота в пикселях
+            autosize: false, 
+            width: 1000,    
+            height: 500      
         };
 
         var heatmapData = [
